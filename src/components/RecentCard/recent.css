@@ -1,0 +1,59 @@
+.recentCard {
+  margin-block: 1rem;
+  width: 10rem;
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(5px);
+  opacity: 1;
+  padding: 0.4rem 0.7rem;
+  color: white;
+  text-align: center;
+  position: relative;
+}
+.weatherIcon {
+  font-size: 3.3rem;
+  margin-bottom: 0.4rem;
+}
+.weatherInfo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  .temperature {
+    display: flex;
+    align-items: center;
+    > span {
+      margin-right: 0.5rem;
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
+  }
+  .place {
+    font-size: 1.1rem;
+    font-weight: 300;
+  }
+}
+.extraTemp {
+  margin-block-start: 0.9rem;
+  display: flex;
+  justify-content: space-between;
+  padding-inline: 0.5rem;
+  align-items: center;
+
+  .humidity {
+    display: flex;
+    font-size: 0.9rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .windSpeed {
+    display: flex;
+    font-size: 0.9rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}

@@ -1,0 +1,45 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 10rem;
+  position: fixed;
+  width: 100vw;
+  background: transparent;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    object-fit: contain;
+    margin-right: 0.2rem;
+    transition: all 1s ease-in-out;
+  }
+
+  img:hover {
+    transform: rotate(360deg);
+  }
+
+  > p {
+    text-align: center;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-size: 1.4rem;
+    letter-spacing: 1.2px;
+    color: white;
+    position: relative;
+  }
+}
+
+.menu {
+  cursor: pointer;
+  color: white;
+}
+
+.navbar.otherPage {
+  padding: 1rem 10rem;
+  background-color: #1f1f1f;
+}
