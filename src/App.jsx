@@ -5,6 +5,7 @@ import Home from "./components/Home/Home";
 import Detail from "./components/DetailPage/Detail";
 import Footer from "./components/Footer/Footer";
 import "./App.css";
+import { bg1, bg2, bg3, bg4 } from "./assets";
 
 const App = () => {
   const backgroundImages = [

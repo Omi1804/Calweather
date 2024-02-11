@@ -1,4 +1,4 @@
-import { logo } from "../../assets";
+import logo from "../../assets/logo.svg";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./navbar.css";
 import SearchBar from "../Elements/SearchBar/SearchBar";
