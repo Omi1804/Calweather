@@ -2,10 +2,6 @@
   width: 100vw;
   height: 100vh;
   padding: 10rem;
-  background-image: url("../../assets/bg.jpg");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
 }
 
 .homeSearch {
@@ -28,4 +24,16 @@
   flex-wrap: wrap;
   justify-content: space-between;
   cursor: pointer;
+}
+
+@media screen and (max-width: 500px) {
+  .homeSec {
+    padding: 7rem 2rem;
+  }
+  .homeSearch {
+    margin-block-end: 0.5rem;
+  }
+  .recentSearches {
+    width: 100%;
+  }
 }

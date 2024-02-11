@@ -57,3 +57,40 @@
     gap: 0.5rem;
   }
 }
+
+@media screen and (max-width: 500px) {
+  .recentCard {
+    margin-block: 0.5rem;
+    width: 6rem;
+    padding: 0.2rem;
+  }
+
+  .weatherIcon {
+    font-size: 2rem;
+    margin-bottom: 0.1rem;
+  }
+  .weatherInfo {
+    .temperature {
+      > span {
+        font-size: 0.7rem;
+      }
+      > p {
+        font-size: 0.7rem;
+      }
+    }
+    .place {
+      font-size: 0.5rem;
+    }
+  }
+
+  .extraTemp {
+    margin-block-start: 0.5rem;
+    padding-inline: 0.2rem;
+    .humidity {
+      font-size: 0.5rem;
+    }
+    .windSpeed {
+      font-size: 0.5rem;
+    }
+  }
+}

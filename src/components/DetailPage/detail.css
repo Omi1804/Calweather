@@ -1,10 +1,6 @@
 .detailedWeather {
   width: 100%;
   height: 100vh;
-  background: url("../../assets/bg.jpg");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
   padding: 5rem;
 }
 
@@ -162,5 +158,70 @@
   > p {
     font-size: 1.2rem;
     padding: 1rem;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .detailedWeather {
+    padding: 1rem;
+  }
+
+  .goBackButton {
+    font-size: 0.7rem;
+    padding: 0.3rem;
+    min-width: 4rem;
+    top: 2.3rem;
+    left: 0;
+    > span {
+      font-size: 1rem;
+    }
+  }
+
+  .detailedCard {
+    width: 100%;
+    margin-top: 5rem;
+
+    .header {
+      font-size: 0.7rem;
+      padding: 0.5rem;
+    }
+  }
+  .cardPartitions {
+    grid-template-columns: 1fr;
+
+    .sec1 {
+      .weatherDetail {
+        justify-content: center;
+
+        .temp {
+          font-size: 3rem;
+        }
+      }
+    }
+    .sec2 {
+      > div {
+        .icon {
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+  .moreDetails {
+    width: 100%;
+    padding: 0rem;
+
+    > button,
+    > p {
+      min-width: 6rem;
+      padding: 0.5rem 1rem;
+    }
+
+    > p {
+      gap: 0.4rem;
+    }
+  }
+
+  .moreInfo {
+    width: 100%;
   }
 }

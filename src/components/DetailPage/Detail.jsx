@@ -86,7 +86,6 @@ const Detail = () => {
         <span className="material-symbols-outlined">keyboard_backspace</span>
         <p>Go back</p>
       </button>
-
       {!moreInfo && (
         <div>
           <div className="detailedCard">
@@ -103,14 +102,18 @@ const Detail = () => {
                   </div>
 
                   <p className="temp">
-                    {tempType === "celcius"
-                      ? `${tempInfo.temp}°C`
-                      : `${tempInfo.temp}°F`}
+                    {tempInfo.temp
+                      ? tempType === "celcius"
+                        ? `${tempInfo.temp}°C`
+                        : `${tempInfo.temp}°F`
+                      : "Not Found"}
                   </p>
                 </div>
                 <div className="weatherMood">
                   <p className="mood">{tempInfo.weathermood}</p>
-                  <p className="place">{tempInfo.name}, India</p>
+                  <p className="place">
+                    {tempInfo.name ? tempInfo.name : "NA"}, India
+                  </p>
                 </div>
               </div>
               <div className="sec2">
@@ -119,7 +122,7 @@ const Detail = () => {
                     <i className={"wi wi-sunset"}></i>
                     <p>Sunset</p>
                   </div>
-                  <p>{tempInfo.sunset} PM </p>
+                  <p>{tempInfo.sunset ? `${tempInfo.sunset} PM` : "NA"}</p>
                 </div>
                 <hr />
                 <div className="humidity">
@@ -127,7 +130,7 @@ const Detail = () => {
                     <i className={"wi wi-humidity"}></i>
                     <p>Humidity</p>
                   </div>
-                  <p>{tempInfo.humidity} </p>
+                  <p>{tempInfo.humidity ? tempInfo.humidity : "NA"} </p>
                 </div>
                 <hr />
                 <div className="rain">
@@ -135,7 +138,7 @@ const Detail = () => {
                     <i className={"wi wi-rain"}></i>
                     <p>Pressure</p>
                   </div>
-                  <p>{tempInfo.pressure} </p>
+                  <p>{tempInfo.pressure ? tempInfo.pressure : "NA"} </p>
                 </div>
                 <hr />
                 <div className="windSpeed">
@@ -143,7 +146,7 @@ const Detail = () => {
                     <i className={"wi wi-strong-wind"}></i>
                     <p>Speed</p>
                   </div>
-                  <p>{tempInfo.speed} </p>
+                  <p>{tempInfo.speed ? tempInfo.speed : "NA"} </p>
                 </div>
               </div>
             </div>
@@ -154,22 +157,24 @@ const Detail = () => {
             </button>
             <p onClick={() => setMoreInfo((prev) => !prev)}>
               More Info
-              <span className="material-symbols-outlined">
-                {" "}
-                arrow_right_alt
-              </span>
+              <span className="material-symbols-outlined">arrow_right_alt</span>
             </p>
           </div>
         </div>
       )}
-
-      {moreInfo && (
-        <div className="moreInfo">
-          <p>Previous Temperatures</p>
-          <hr />
-          <Graph />
-        </div>
-      )}
+      {tempInfo.temp
+        ? moreInfo && (
+            <div className="moreInfo">
+              <p>Previous Temperatures</p>
+              <hr />
+              <Graph />
+            </div>
+          )
+        : moreInfo && (
+            <div className="moreInfo">
+              <p>No Data Availaible</p>
+            </div>
+          )}
     </section>
   );
 };
