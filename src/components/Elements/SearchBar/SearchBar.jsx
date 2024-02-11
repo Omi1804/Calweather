@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./search.css";
 
 const SearchBar = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const [searchValue, setSearchValue] = useState("");
   const [recentSearches, setRecentSearches] = useState([]);
 
@@ -23,7 +24,8 @@ const SearchBar = () => {
       ...new Set([searchValue, ...recentSearches]),
     ].slice(0, 4);
     setRecentSearches(updatedSearches);
-    window.location.href = `/${searchValue}`;
+    localStorage.setItem("recentSearches", JSON.stringify(updatedSearches));
+    navigate(`/${searchValue}`);
   }
 
   return (

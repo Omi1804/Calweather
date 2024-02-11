@@ -8,13 +8,7 @@ import "./App.css";
 import { bg1, bg2, bg3, bg4 } from "./assets";
 
 const App = () => {
-  const backgroundImages = [
-    "bg1.jpg",
-    "bg2.jpg",
-    "bg3.jpg",
-    "bg4.jpg",
-    "bg5.jpg",
-  ];
+  const backgroundImages = [bg1, bg2, bg3, bg4];
 
   const [backgroundImage, setBackgroundImage] = useState("");
 
@@ -31,7 +25,7 @@ const App = () => {
     <BrowserRouter>
       <div
         style={{
-          backgroundImage: `url(../src/assets/${backgroundImage})`,
+          backgroundImage: `url(${backgroundImage})`,
           backgroundPosition: "center",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",

@@ -1,9 +1,11 @@
 import "./detail.css";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+
 import { useState, useEffect } from "react";
 import Graph from "../Elements/Graph/Graph";
 
 const Detail = () => {
+  const params = useParams();
   const location = useLocation();
   const navigate = useNavigate();
   const [searchValue, setSearchValue] = useState(location.pathname.slice(1));
@@ -68,8 +70,12 @@ const Detail = () => {
   };
 
   useEffect(() => {
+    setSearchValue(location.pathname.slice(1));
+  }, [location]);
+
+  useEffect(() => {
     getWeatherInfo();
-  }, [tempType]);
+  }, [searchValue, tempType]);
 
   function handleTempChange() {
     setTempType((prev) => (prev === "celcius" ? "fahrenheit" : "celcius"));
