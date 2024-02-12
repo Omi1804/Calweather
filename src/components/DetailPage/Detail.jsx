@@ -1,22 +1,22 @@
 import "./detail.css";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
-
+import { useNavigate, useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import Graph from "../Elements/Graph/Graph";
+import { addSearch } from "../../reduxFiles/citiesRedux";
 
 const Detail = () => {
-  const params = useParams();
-  const location = useLocation();
   const navigate = useNavigate();
-  const [searchValue, setSearchValue] = useState(location.pathname.slice(1));
+  const dispatch = useDispatch();
+  const params = useParams();
   const [tempType, setTempType] = useState("celcius");
   const [tempInfo, setTempInfo] = useState({});
-  const [weatherState, setWeatheState] = useState("");
+  const [weatherState, setWeatherState] = useState("");
   const [moreInfo, setMoreInfo] = useState(false);
 
   const getWeatherInfo = async () => {
     try {
-      let url = `https://api.openweathermap.org/data/2.5/weather?q=${searchValue}&units=metric&appid=94749519e1ef7e1c176399f75ffb04c3`;
+      let url = `https://api.openweathermap.org/data/2.5/weather?q=${params.city}&units=metric&appid=94749519e1ef7e1c176399f75ffb04c3`;
       let res = await fetch(url);
       let data = await res.json();
       const { temp, humidity, pressure } = data.main;
@@ -35,20 +35,20 @@ const Detail = () => {
       if (weathermood) {
         switch (weathermood) {
           case "Clouds":
-            setWeatheState("wi-day-cloudy");
+            setWeatherState("wi-day-cloudy");
             break;
           case "Haze":
-            setWeatheState("wi-fog");
+            setWeatherState("wi-fog");
             break;
           case "Clear":
-            setWeatheState("wi-day-sunny");
+            setWeatherState("wi-day-sunny");
             break;
           case "Mist":
-            setWeatheState("wi-dust");
+            setWeatherState("wi-dust");
             break;
 
           default:
-            setWeatheState("wi-day-sunny");
+            setWeatherState("wi-day-sunny");
             break;
         }
       }
@@ -70,12 +70,9 @@ const Detail = () => {
   };
 
   useEffect(() => {
-    setSearchValue(location.pathname.slice(1));
-  }, [location]);
-
-  useEffect(() => {
+    dispatch(addSearch(params.city));
     getWeatherInfo();
-  }, [searchValue, tempType]);
+  }, [dispatch, params.city, tempType]);
 
   function handleTempChange() {
     setTempType((prev) => (prev === "celcius" ? "fahrenheit" : "celcius"));

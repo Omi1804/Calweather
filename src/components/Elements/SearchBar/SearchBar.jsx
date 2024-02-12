@@ -1,30 +1,17 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import "./search.css";
+import { addSearch } from "../../../reduxFiles/citiesRedux";
 
 const SearchBar = () => {
   const location = useLocation();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [searchValue, setSearchValue] = useState("");
-  const [recentSearches, setRecentSearches] = useState([]);
-
-  useEffect(() => {
-    const storedSearches = JSON.parse(localStorage.getItem("recentSearches"));
-    if (storedSearches && Array.isArray(storedSearches)) {
-      setRecentSearches(storedSearches);
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("recentSearches", JSON.stringify(recentSearches));
-  }, [recentSearches]);
 
   function handleClick() {
-    const updatedSearches = [
-      ...new Set([searchValue, ...recentSearches]),
-    ].slice(0, 4);
-    setRecentSearches(updatedSearches);
-    localStorage.setItem("recentSearches", JSON.stringify(updatedSearches));
+    dispatch(addSearch(searchValue));
     navigate(`/${searchValue}`);
   }
 

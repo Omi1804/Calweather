@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
 import SearchBar from "../Elements/SearchBar/SearchBar";
 import Recent from "../RecentCard/Recent";
+import { useSelector } from "react-redux";
 import "./home.css";
 
 const Home = () => {
-  const [recentCities, setRecentCities] = useState(
-    localStorage.getItem("recentSearches")
-  );
+  const recentCities = useSelector((state) => state.cities.recentSearches);
 
   return (
     <section className="homeSec">
@@ -17,9 +16,7 @@ const Home = () => {
         <p>RECENT LOCATIONS</p>
         <div className="recentCards">
           {recentCities
-            ? JSON.parse(recentCities).map((item) => (
-                <Recent item={item} key={item} />
-              ))
+            ? recentCities.map((item) => <Recent item={item} key={item} />)
             : ""}
         </div>
       </div>
