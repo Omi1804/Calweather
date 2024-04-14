@@ -11,8 +11,10 @@ const SearchBar = () => {
   const [searchValue, setSearchValue] = useState("");
 
   function handleClick() {
-    dispatch(addSearch(searchValue));
-    navigate(`/${searchValue}`);
+    if (searchValue.length > 0) {
+      dispatch(addSearch(searchValue));
+      navigate(`/${searchValue}`);
+    }
   }
 
   return (

@@ -1,0 +1,110 @@
+.tableContent {
+  width: 100vw;
+  height: 100vh;
+  padding: 5rem;
+  overflow-y: hidden;
+}
+
+.tableStart {
+  margin-top: 1rem;
+  display: flex;
+  height: 100%;
+  color: white;
+  overflow-y: scroll;
+  border-radius: 15px;
+}
+
+.table {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06);
+  backdrop-filter: blur(5px);
+  border-collapse: collapse;
+  position: relative;
+}
+
+a:hover {
+  color: #ccc;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+}
+
+th {
+  color: white;
+  font-size: 1.4rem;
+  border-bottom: 1px solid #ddd;
+  font-weight: 600;
+}
+
+tr:hover {
+  background: rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06);
+  backdrop-filter: blur(5px);
+}
+
+/* Media Queries */
+@media (max-width: 1000px) and (min-width: 901px) {
+  table {
+    width: 85%; /* Slightly reduce the width as screen narrows */
+  }
+
+  th,
+  td {
+    font-size: 1.2rem; /* Adjust font size slightly smaller */
+  }
+}
+
+@media (max-width: 900px) {
+  table {
+    width: 90%; /* Adjusted width */
+  }
+
+  th,
+  td {
+    padding: 8px; /* Reduce padding */
+    font-size: 1.1rem; /* Reduce font size for better fit */
+  }
+}
+
+@media (max-width: 700px) {
+  .table {
+    margin: 1rem; /* Tighten margin around the table */
+  }
+
+  table {
+    width: 95%; /* Increase width to maximize use of space */
+  }
+
+  th,
+  td {
+    font-size: 1rem; /* Adjust font size to keep text readable */
+    padding: 7px; /* Adjust padding to keep layout tidy */
+  }
+}
+
+@media (max-width: 500px) {
+  .table {
+    margin: 0.5rem; /* Minimize margin to maximize space */
+  }
+
+  table {
+    width: 100%; /* Table should use the full width */
+  }
+
+  th,
+  td {
+    padding: 8px; /* Minimize padding */
+    font-size: 0.9rem; /* Smallest practical font size */
+  }
+
+  th {
+    padding: 5px; /* Ensure header matches cell padding */
+  }
+}

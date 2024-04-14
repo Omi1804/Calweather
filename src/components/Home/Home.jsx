@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import SearchBar from "../Elements/SearchBar/SearchBar";
 import Recent from "../RecentCard/Recent";
 import { useSelector } from "react-redux";

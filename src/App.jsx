@@ -6,11 +6,13 @@ import Detail from "./components/DetailPage/Detail";
 import Footer from "./components/Footer/Footer";
 import "./App.css";
 import { bg1, bg2, bg3, bg4 } from "./assets";
+import Home2 from "./components/Home/Home2";
 
 const App = () => {
   const backgroundImages = [bg1, bg2, bg3, bg4];
 
   const [backgroundImage, setBackgroundImage] = useState("");
+  const [tabularView, setTabularView] = useState(true);
 
   const selectRandomBackground = () => {
     const randomIndex = Math.floor(Math.random() * backgroundImages.length);
@@ -20,6 +22,12 @@ const App = () => {
   useEffect(() => {
     selectRandomBackground();
   }, []);
+
+  function handleTabularView() {
+    setTabularView((prev) => !prev);
+  }
+
+  console.log(tabularView);
 
   return (
     <BrowserRouter>
@@ -32,9 +40,16 @@ const App = () => {
         }}
         className="background"
       >
-        <Navbar />
+        <Navbar
+          handleTabularView={handleTabularView}
+          tabularView={tabularView}
+        />
         <Routes>
-          <Route path="/" element={<Home />} />
+          {tabularView ? (
+            <Route path="/" element={<Home2 />} />
+          ) : (
+            <Route path="/" element={<Home />} />
+          )}
           <Route path="/:city" element={<Detail />} />
         </Routes>
         <Footer />
